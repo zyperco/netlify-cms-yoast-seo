@@ -21,7 +21,7 @@
   "main": "src/index.js",
   "dependencies": {
     "snarkdown": "^1.2.2",
-    "yoastseo": "~1.30.1"
+    "yoastseo": "~1.63.0"
   },
   "devDependencies": {
     "babel-core": "^6.26.0",
