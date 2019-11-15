@@ -9,21 +9,28 @@ export default class Presenter {
         return h('div', { className: 'yoast' },
             h('h3', { className: 'yoast__heading' }, 'SEO'),
             h('ul', { className: 'yoast__items' },
-                this.getScoreItemsAsHTML(h, data.seo)
+                this.getScoreItemsAsHTML(h, data.seo, 'seo')
             ),
             h('h3', { className: 'yoast__heading' }, 'Content'),
             h('ul', { className: 'yoast__items yoast__items--bottom' },
-                this.getScoreItemsAsHTML(h, data.content)
+                this.getScoreItemsAsHTML(h, data.content, 'content')
             )
         )
     }
 
-    getScoreItemsAsHTML(h, items) {
-        return items.map(item => this.getScoreItemAsHTML(h, item))
+    getScoreItemsAsHTML(h, items, datatype) {
+        return items.map((item, index) => this.getScoreItemAsHTML(h, item, index, datatype))
     }
 
-    getScoreItemAsHTML(h, item) {
-        return h('li', { className: `yoast__item yoast__item--${item.rating}` }, item.text.replace(/<(?:.|\n)*?>/gm, ''))
+    getScoreItemAsHTML(h, item, index, datatype) {
+        return h(
+          'li',
+          {
+            className: `yoast__item yoast__item--${item.rating}`,
+            key: `${datatype}-${index}`
+          },
+          item.text.replace(/<(?:.|\n)*?>/gm, '')
+        )
     }
 
     getScores(assessor) {
