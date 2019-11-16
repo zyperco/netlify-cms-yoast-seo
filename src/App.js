@@ -1,4 +1,4 @@
-import { Paper, SeoAssessor, ContentAssessor } from 'yoastseo'
+import { Paper, SEOAssessor, ContentAssessor } from 'yoastseo'
 import zipObject from 'lodash/zipObject'
 import omit from 'lodash/omit'
 import Jed from 'jed'
@@ -9,7 +9,7 @@ export default class App {
 
     constructor() {
         this.contentAssessor = new ContentAssessor(this.i18n())
-        this.seoAssessor = new SeoAssessor(this.i18n())
+        this.seoAssessor = new SEOAssessor(this.i18n())
 
         this.paper = new Paper()
 
